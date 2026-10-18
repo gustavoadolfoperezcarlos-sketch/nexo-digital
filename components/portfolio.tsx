@@ -124,7 +124,7 @@ export function Portfolio() {
   const [company, setCompany] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
-  const [formStartedAt, setFormStartedAt] = useState(Date.now());
+  const [formStartedAt, setFormStartedAt] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -323,7 +323,31 @@ export function Portfolio() {
         </button>
       </section>
 
-      <footer><div className="brand"><strong>NEXO</strong><span>DIGITAL</span></div><p>Nexo Digital — dirigido por Gustavo Adolfo Perez Carlos</p><a href="#inicio">Volver arriba ↑</a></footer>
+      <section className="direct-contact" aria-labelledby="direct-contact-title">
+        <div>
+          <p className="eyebrow">CONTACTO DIRECTO</p>
+          <h2 id="direct-contact-title">¿Prefieres escribir<br />sin llenar el registro?</h2>
+        </div>
+        <div className="contact-links">
+          <a href="mailto:gustavoadolfoperezcarlos@gmail.com">
+            <span>Correo</span>
+            <strong>gustavoadolfoperezcarlos@gmail.com</strong>
+            <b aria-hidden="true">↗</b>
+          </a>
+          <a href="https://wa.me/525540457529?text=Hola%20Gustavo%2C%20quiero%20platicarte%20una%20idea%20de%20proyecto." target="_blank" rel="noreferrer">
+            <span>WhatsApp</span>
+            <strong>+52 55 4045 7529</strong>
+            <b aria-hidden="true">↗</b>
+          </a>
+          <a href="tel:+525540457529">
+            <span>Teléfono</span>
+            <strong>+52 55 4045 7529</strong>
+            <b aria-hidden="true">↗</b>
+          </a>
+        </div>
+      </section>
+
+      <footer><div className="brand"><strong>NEXO</strong><span>DIGITAL</span></div><p>Nexo Digital — dirigido por Gustavo Adolfo Perez Carlos</p><div className="footer-links"><a href="/privacidad">Privacidad</a><a href="#inicio">Volver arriba ↑</a></div></footer>
 
       {activeService && (
         <div className="overlay" role="dialog" aria-modal="true" aria-labelledby="service-dialog-title" onMouseDown={() => setActiveService(null)}>
@@ -384,7 +408,7 @@ export function Portfolio() {
                     <label className="field">Correo electrónico<input type="email" name="email" autoComplete="email" required value={contactEmail} onChange={(event) => setContactEmail(event.target.value)} placeholder="nombre@empresa.com" /></label>
                     <label className="field">WhatsApp<input type="tel" name="telefono" autoComplete="tel" value={contactPhone} onChange={(event) => setContactPhone(event.target.value)} placeholder="Opcional" /></label>
                     <label className="honeypot" aria-hidden="true">Sitio web<input name="website" tabIndex={-1} autoComplete="off" /></label>
-                    <label className="consent"><input type="checkbox" required /> Acepto que me contacten para conversar sobre este proyecto.</label>
+                    <label className="consent"><input type="checkbox" required /><span>Acepto que me contacten para conversar sobre este proyecto y he leído el <a href="/privacidad" target="_blank">aviso de privacidad</a>.</span></label>
                     {formError && <p className="form-error" role="alert">{formError}</p>}
                   </fieldset>
                 )}
